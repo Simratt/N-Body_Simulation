@@ -1,4 +1,4 @@
-import sys, pygame
+import sys, pygame, pygame_menu
 from particle import *
 
 # some preliminary functions 
@@ -18,9 +18,9 @@ screen.fill(background_color)
 
 #creating the particles 
 
-for i in range(3):
+for i in range(7):
     coords = randomize((width, height))
-    p = Particle(coords[0], coords[1], random.randint(10, 100))
+    p = Particle(coords[0], coords[1], random.randint(10, 30))
     p.display(screen)
     particles.append(p)
 

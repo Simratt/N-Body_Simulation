@@ -2,7 +2,7 @@ import pygame
 import math
 import random
 import numpy as np
-GRAVITY = 0.01
+GRAVITY = 0.001
 
 class Particle:
     ''' This is a representation of a particle in space
@@ -18,11 +18,8 @@ class Particle:
     - velocity: the velocity of the partilce, starts off with [0,0] and then 
                 addys the velocity to <x> <y>
     - dv: the change in velocity
-    - thicknessL: used by pygame to determine how thick the stroke of the drawn 
+    - thickness: used by pygame to determine how thick the stroke of the drawn 
                   circle should be
-
-    === Representaion Invariants === 
-    #TODO 
 
     x: int 
     y: int 
@@ -46,7 +43,7 @@ class Particle:
         self.mass = mass
         self.size = (self.mass/math.pi)**(1/2)
         self.FG = 0
-        self.color = (255,255,255)
+        self.color = [255,255,255]
         self.thickness = 100
         
     def display(self, screen: pygame.display) -> None:
@@ -69,7 +66,7 @@ class Particle:
                 # becomes too close to another particle
                 if dist < self.size  + other.size: 
                     self.dv *= -0.5
-
+    
         self.velocity += self.dv #add the force vector to the velocity 
         self._displace(self.velocity)
 
